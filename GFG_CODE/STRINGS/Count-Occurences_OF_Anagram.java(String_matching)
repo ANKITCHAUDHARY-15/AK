@@ -1,0 +1,48 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=Integer.parseInt(sc.next());
+		while(t-->0){
+		    String text=sc.next();
+		    String word=sc.next();
+		    int count=0;
+		    int w=0;;
+		    for(int j=0;j<word.length();j++){
+		          w+=word.charAt(j);
+		        }
+		    for(int i=0;i<text.length()-word.length()+1;i++){
+		        int tx=0;
+		        for(int j=i;j<word.length()+i;j++){
+		            tx+=text.charAt(j);
+		        }
+		        if(w==tx){
+		            if(check(text,word,i)){
+		                count+=1;
+		            }
+		        }
+		    }
+		    System.out.println(count);
+		}
+	}
+	static boolean check(String text,String word,int i){
+	    for(int j=0;j<word.length();j++){
+	        boolean flag=true;
+	        for(int k=0;k<word.length();k++){
+	            if(text.charAt(i+j)==word.charAt(k)){
+	                flag=false;
+	                break;
+	            }
+	        }
+	        if(flag){
+	            return false;
+	        }
+	    }
+	    return true;  
+	}
+}
