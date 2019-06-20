@@ -68,3 +68,52 @@ class GFG
 	 }
 	 }
 }
+
+
+
+
+METHOD 2:--------------------------------------------------------------------------------------------------------------------
+	
+	
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+	public static void main (String[] args)
+	 {
+	 Scanner sc=new Scanner(System.in);
+	 int t=sc.nextInt();
+	 while(t-->0){
+	     int n=sc.nextInt();
+	     char ch[]=new char[n];
+	     
+	     for(int i=0;i<n;i++){
+	         ch[i]=sc.next().charAt(0);
+	     }
+	     //System.out.println(Arrays.toString(ch));
+	     Queue<Character> que=new LinkedList<>();
+	     int arr[]=new int[26];
+	     for(int i=0;i<n;i++){
+	         arr[ch[i]-'a']++;
+	         que.add(ch[i]);
+	         while(!que.isEmpty()){
+	             int k=que.peek();
+	             if(arr[k-'a']>1){
+	                 que.remove();
+	             }
+	             else{
+	                 break;
+	             }
+	         }
+	         if(que.peek()==null){
+	             System.out.print(-1+" ");
+	         }
+	         else
+	            System.out.print(que.peek()+" ");
+	     }
+	     System.out.println();
+	     
+	 }
+	 }
+}
